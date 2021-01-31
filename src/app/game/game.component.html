@@ -1,0 +1,35 @@
+<!-- j'ai réussi a créer le service et à l'importer dans app mais je dois maintenant l'importer ici -->
+<div class="game-bg">
+	<div class="game-container" >
+		<div 	*ngFor="let ball of balls; let i = index"
+				class="ball {{ball.name}} {{ball.status}}" 
+				[indexOfBall]="i"
+				(click)="onChangeStatus(i)"></div>
+		<div 	*ngFor="let nb of counter; let i = index" 
+				class="line-vert vert-{{nb}}"></div>
+		<div 	*ngFor="let nb of counter; let i=index"
+				class="line-horiz horiz-{{nb}}"></div>
+		<!-- <div class="ball ball-1 light-on" ></div>
+		<div class="ball ball-2 light-off"></div>
+		<div class="ball ball-3 light-on"></div>
+		<div class="ball ball-4 light-on"></div>
+		<div class="ball ball-5 light-on"></div>
+		<div class="ball ball-6 light-on"></div>
+		<div class="ball ball-7 light-on"></div>
+		<div class="ball ball-8 light-on"></div>
+		<div class="ball ball-9 light-on"></div> -->
+		<!-- <div class="line-vert vert-1"></div>
+		<div class="line-vert vert-2"></div>
+		<div class="line-vert vert-3"></div>
+		<div class="line-vert vert-4"></div>
+		<div class="line-vert vert-5"></div>
+		<div class="line-vert vert-6"></div>
+		<div class="line-horiz horiz-1"></div>
+		<div class="line-horiz horiz-2"></div>
+		<div class="line-horiz horiz-3"></div>
+		<div class="line-horiz horiz-4"></div>
+		<div class="line-horiz horiz-5"></div>
+		<div class="line-horiz horiz-6"></div> -->
+
+	</div>
+</div>
