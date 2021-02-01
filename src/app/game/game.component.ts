@@ -19,10 +19,10 @@ export class GameComponent implements OnInit {
 	ngOnInit(){
 		this.balls = this.gameService.balls
 	}
-	onChangeStatus(index){
+	onModifyBalls(index){
 		// const index = this.indexOfBall
 		console.log("changement de statut pour " + index)
-		this.gameService.changeStatus(index)
+		this.gameService.modifyBalls(index)
 	}
 
 }

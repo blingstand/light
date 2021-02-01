@@ -20,6 +20,8 @@
 			width: 75px;
 			border-radius: 50%; 
 			cursor: pointer;
+			display: grid;
+			place-items: center; 
 		}
 		.light-on{
 			background-color: green;
