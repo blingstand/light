@@ -1,6 +1,10 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-9 text-center bg-success">coups joué</div>
-		<div class="col-sm-3 text-right  bg-info">temps</div>
-	</div>	
-</div>	
+<div class="container-score">
+	<div class="steps">
+		<div class="container-steps">
+			<p><a (click)="onGoToStep(0)">début</a></p>
+			<p 	*ngFor="let step of steps; let i = index"
+				title='Atteindre étape : {{i}}'> <a href="#">{{ step.clicked}}</a></p>
+		</div>
+	</div>
+	<div class="time">temps</div>	
+</div>	  

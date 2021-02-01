@@ -28,6 +28,9 @@ export class GameService{
 			relatives: [6, 8]},
 
 	]
+	steps = [
+		{ clicked: null, inactive: [2]}
+	]
 	changeRelativesStatus(index){
 		//I want to return the relatives of a balls identified by its index
 		// alert("click on " + index + "\nchange " + this.balls[index].relatives)
@@ -46,5 +49,24 @@ export class GameService{
 	modifyBalls(index){
 		this.changeBallStatus(index)
 		this.changeRelativesStatus(index)
+		this.getNewStep(index)
+		console.log(this.steps)
+	}
+	getAllInactives(){
+		//I want to return an array of all inactive ball
+		let allInactives = []
+		for (let ball of this.balls) {
+			if (ball.status === 'light-off') {
+				allInactives.push(ball)
+			}
+		}
+		return allInactives
+	}
+	getNewStep(index){
+		//I want to create a new step object in steps, 
+		//when user clicks on a ball 
+		const lastStep = this.steps[this.steps.length -1] 
+		const newStep = {clicked: index + 1 , inactive: this.getAllInactives()} 
+		this.steps.push(newStep)
 	}
 }
