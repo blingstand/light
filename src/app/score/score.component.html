@@ -2,8 +2,12 @@
 	<div class="steps">
 		<div class="container-steps">
 			<p><a (click)="onGoToStep(0)">début</a></p>
-			<p 	*ngFor="let step of steps; let i = index"
-				title='Atteindre étape : {{i}}'> <a href="#">{{ step.clicked}}</a></p>
+			
+			<p 		*ngFor="let step of steps; let i = index"
+					title='Atteindre étape : {{i}}'> 
+				<a 	(click)="onGoToStep(i)"		>{{ step.clicked}}</a>
+			</p>
+		
 		</div>
 	</div>
 	<div class="time">temps</div>	

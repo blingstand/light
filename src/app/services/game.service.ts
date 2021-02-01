@@ -57,7 +57,7 @@ export class GameService{
 		let allInactives = []
 		for (let ball of this.balls) {
 			if (ball.status === 'light-off') {
-				allInactives.push(ball)
+				allInactives.push(ball.index)
 			}
 		}
 		return allInactives
@@ -68,5 +68,31 @@ export class GameService{
 		const lastStep = this.steps[this.steps.length -1] 
 		const newStep = {clicked: index + 1 , inactive: this.getAllInactives()} 
 		this.steps.push(newStep)
+	}
+	lightThem(){
+		const inactives = this.steps[this.steps.length -1].inactive
+		console.log("inactives")
+		console.log(inactives)
+		console.log('for')
+
+		for (let ball of this.balls){
+			console.log('ball : ', ball.index, inactives.includes(ball.index))
+			if (inactives.includes(ball.index)){
+				ball.status = "light-off"
+			}else{
+				ball.status = "light-on"
+			}
+		}
+	}
+	returnToFormerState(formerState){
+		length = this.steps.length
+		for (let i = 1; i < length - formerState; i++){
+			console.log(i, this.steps)
+			this.steps.pop()
+		}
+		console.log('*********')
+		console.log(this.steps)
+		this.lightThem()
+
 	}
 }

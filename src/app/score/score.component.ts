@@ -16,8 +16,9 @@ export class ScoreComponent implements OnInit {
 		this.steps = this.gameService.steps
 		console.log(this.steps)
 	}
-	onGoToStep(x){
-		alert("ampoule(s) éteinte(s) : " + this.steps[x].inactive) 
+	onGoToStep(formerState: number){
+		//I want to set light status as the given formerState
+		this.gameService.returnToFormerState(formerState)
 	}
 
 }
