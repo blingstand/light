@@ -93,6 +93,18 @@ export class GameService{
 		console.log('*********')
 		console.log(this.steps)
 		this.lightThem()
-
+	}
+	isVictory(){
+		//I want to return false if at least one ball is not on
+		console.log("balls : ")
+		console.log(this.balls)
+		for (let ball of this.balls){
+			if (ball.status === "light-off"){
+				console.log('pas encore de victoire, car : ')
+				console.log(ball.index)
+				return false
+			}
+		}
+		return true
 	}
 }

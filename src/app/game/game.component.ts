@@ -12,7 +12,7 @@ export class GameComponent implements OnInit {
 	counter: any[] = ["1","2","3","4","5","6"]
 	indexOfBall: number; 
 	// @Input() ballName: string; 
- //  	@Input() ballStatus: string; 
+	//  	@Input() ballStatus: string; 
 
 	constructor(private gameService: GameService) { }
 
@@ -21,8 +21,15 @@ export class GameComponent implements OnInit {
 	}
 	onModifyBalls(index){
 		// const index = this.indexOfBall
-		console.log("changement de statut pour " + index)
+		// console.log("changement de statut pour " + index)
+		// console.log('victoire : ' + this.gameService.isVictory())
 		this.gameService.modifyBalls(index)
+		if (this.gameService.isVictory() !== false){
+			setTimeout(
+			() => { alert("victoire") }, 500
+			); 
+			
+		}
 	}
 
 }
