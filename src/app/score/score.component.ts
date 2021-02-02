@@ -12,6 +12,7 @@ export class ScoreComponent implements OnInit {
 
 	constructor(private gameService: GameService) { }
 
+
 	ngOnInit() {
 		this.steps = this.gameService.steps
 		console.log(this.steps)
@@ -19,6 +20,9 @@ export class ScoreComponent implements OnInit {
 	onGoToStep(formerState: number){
 		//I want to set light status as the given formerState
 		this.gameService.returnToFormerState(formerState)
+	}
+	getStepNumber(){
+		return this.gameService.steps.length - 1 ; 
 	}
 
 }
