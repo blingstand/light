@@ -20,6 +20,6 @@ class VictoryViews(APIView):
         json_obj = request.data #note : dump > encode | loads > decode
         code = json_obj["victoryCode"]
         response = {
-            'msg': f"Pour gagner il faut utiliser ce code : {code}",
+            'msg': f"Ce code : {code}, a été enregistré.",
         }
         return Response(response, 201)
