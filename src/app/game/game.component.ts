@@ -24,6 +24,8 @@ export class GameComponent implements OnInit {
 		// console.log("changement de statut pour " + index)
 		// console.log('victoire : ' + this.gameService.isVictory())
 		this.gameService.modifyBalls(index)
+		console.log('victoryCode : ')
+		console.log(this.gameService.getVictoryCode())
 		if (this.gameService.isVictory() !== false){
 			setTimeout(
 			() => { alert("victoire") }, 500

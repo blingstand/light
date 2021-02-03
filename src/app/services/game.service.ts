@@ -6,6 +6,7 @@ export class GameService{
 
     constructor(private httpClient: HttpClient) { }
 
+    url = 'http://localhost:8000/api/victory/code/'
     balls = [
     {index: 1, name:    'ball-1', status:   'light-on', 
     relatives: [2, 4]},
@@ -38,6 +39,9 @@ export class GameService{
     steps = [
     { clicked: null, inactive: [2]}
     ]
+    //#####
+    //Methodes
+    //#####
     changeRelativesStatus(index){
         //I want to return the relatives of a balls identified by its index
         // alert("click on " + index + "\nchange " + this.balls[index].relatives)
@@ -54,9 +58,10 @@ export class GameService{
         }
     }
     modifyBalls(index){
+        //I want a method where I can put all others connected to click on ball action 
         this.changeBallStatus(index)
         this.changeRelativesStatus(index)
-        this.getNewStep(index)
+        this.createNewStep(index)
         console.log(this.steps)
     }
     getAllInactives(){
@@ -69,7 +74,7 @@ export class GameService{
         }
         return allInactives
     }
-    getNewStep(index){
+    createNewStep(index){
         //I want to create a new step object in steps, 
         //when user clicks on a ball 
         const lastStep = this.steps[this.steps.length -1] 
@@ -77,13 +82,11 @@ export class GameService{
         this.steps.push(newStep)
     }
     lightThem(){
+        //I want to light on all the ball except the ones I can find in 
+        //last step.inactive 
         const inactives = this.steps[this.steps.length -1].inactive
-        console.log("inactives")
-        console.log(inactives)
-        console.log('for')
 
         for (let ball of this.balls){
-            console.log('ball : ', ball.index, inactives.includes(ball.index))
             if (inactives.includes(ball.index)){
                 ball.status = "light-off"
             }else{
@@ -91,29 +94,40 @@ export class GameService{
             }
         }
     }
-    returnToFormerState(formerState){
+    returnToFormerState(formerStep){
+        // I want to roll back to a former given step
         length = this.steps.length
-        for (let i = 1; i < length - formerState; i++){
-            console.log(i, this.steps)
+        for (let i = 1; i < length - formerStep; i++){
             this.steps.pop()
         }
-        console.log('*********')
-        console.log(this.steps)
+        console.log('*********Clear')
+
         this.lightThem()
     }
+    getVictoryCode(){
+        //I want to extract code from score line and return it
+        let victoryCode = ""
+        let all_steps = this.steps.slice(1)
+        for (let step of all_steps){
+            victoryCode += step.clicked + "-"
+        }
+        victoryCode = victoryCode.slice(0, -1);
+        return victoryCode
+    }
     sendCodeToServer() {
-        const code = "123"
+        //I want to send a code to the server
+        const code = this.getVictoryCode()
         const message = { code: code, size : code.length}
         this.httpClient
-        .post('http://localhost:8000/api/victory/code/', message)
+        .post(this.url, message)
         .subscribe(
-           () => {
+            () => {
               console.log('Envoie terminé !');
-          },
-          (error) => {
-              console.log('Erreur ! : ' + error);
-          }
-          );
+            },
+            (error) => {
+                console.log('Erreur ! : ' + error);
+            }
+        );
     }
     isVictory(){
         //I want to return false if at least one ball is not on

@@ -25,7 +25,6 @@ class VictoryViews(APIView):
         data = request.data 
         cs = CodeSerializer(data=data)
         if cs.is_valid(): 
-            input(f"verif {data['code']} - {self.service.search_existing_code(data['code'])}")
             if not self.service.search_existing_code(data['code']):
                 cs.save()
                 print(f"code {data['code']} est ajouté dans la base.")
