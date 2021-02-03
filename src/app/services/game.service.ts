@@ -102,11 +102,12 @@ export class GameService{
         this.lightThem()
     }
     sendCodeToServer() {
-        const message = { victoryCode: "123"}
+        const code = "123"
+        const message = { code: code, size : code.length}
         this.httpClient
         .post('http://localhost:8000/api/victory/code/', message)
         .subscribe(
-            () => {
+           () => {
               console.log('Envoie terminé !');
           },
           (error) => {
