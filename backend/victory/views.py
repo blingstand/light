@@ -23,6 +23,7 @@ class VictoryViews(APIView):
     def post(self, request):
         """I want to add a new code in db only if it does not exists"""
         data = request.data 
+        print(f"Request POST : {data}")
         cs = CodeSerializer(data=data)
         if cs.is_valid(): 
             if not self.service.search_existing_code(data['code']):

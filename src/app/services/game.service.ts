@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class GameService{
 
     constructor(private httpClient: HttpClient) { }
+    
 
     url = 'http://localhost:8000/api/victory/code/'
     balls = [
@@ -42,6 +43,9 @@ export class GameService{
     //#####
     //Methodes
     //#####
+    sleep(ms){
+      return new Promise(resolve => setTimeout(resolve, ms))
+    }
     changeRelativesStatus(index){
         //I want to return the relatives of a balls identified by its index
         // alert("click on " + index + "\nchange " + this.balls[index].relatives)

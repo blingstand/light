@@ -28,9 +28,8 @@ export class GameComponent implements OnInit {
 		console.log(this.gameService.getVictoryCode())
 		if (this.gameService.isVictory() !== false){
 			setTimeout(
-			() => { alert("victoire") }, 500
+			() => { alert("victoire") }, 300
 			); 
-			
 		}
 	}
 
