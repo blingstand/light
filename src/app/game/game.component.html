@@ -1,16 +1,17 @@
 <!-- j'ai réussi a créer le service et à l'importer dans app mais je dois maintenant l'importer ici -->
 <div class="game-bg">
-	<div class="game-container" >
+	<div class="container-game" >
 
 		<div 	*ngFor="let ball of balls; let i = index"
-				class="ball {{ball.name}} {{ball.status}} text-center" 
-				(click)="onModifyBalls(i)">{{ball.name}}</div>
+		class="ball {{ball.name}} {{ball.status}} text-center" 
+		(click)="onModifyBalls(i)">{{ball.name}}</div>
 
 		<div 	*ngFor="let nb of counter; let i = index" 
-				class="line-vert vert-{{nb}}"></div>
-		
+		class="line-vert vert-{{nb}}"></div>
+
 		<div 	*ngFor="let nb of counter; let i=index"
-				class="line-horiz horiz-{{nb}}"></div>
+		class="line-horiz horiz-{{nb}}"></div>
 
 	</div>
 </div>
+

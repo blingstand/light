@@ -1,0 +1,11 @@
+<form class="container-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+	<div class="content">
+		<label class="form-label" for="code-input">Entrez un code</label>
+		<div class="form-input">
+			<input 	type="text" id="code-input" name="inputCode" ngModel placeholder="ex: 1-2-3" (keyup)="onKeyUp($event)">
+		</div>
+		<div class="container-button">
+			<button class="btn btn-primary" type="submit">Tester ce code</button>
+		</div>
+	</div>	
+</form>

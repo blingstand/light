@@ -1,13 +1,10 @@
 .game-bg{
 	margin-top: 3rem; 
 	background-color: #e6f7ff;
-	height: 75vh;
-	display: grid;
-	grid-template-columns: 20% 1fr 20%;  
+	height: 75vh;  
 	overflow: hidden;
-	.game-container{
+	.container-game{
 		height: 75vh;
-		grid-column: 2; 
 		background-color: teal;
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);  

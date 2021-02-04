@@ -1,0 +1,33 @@
+.container-form{
+	background-color: forestgreen;
+	width: 15vw;
+	height: 18vh;
+	display: grid;
+	place-items: center; 
+	.content{
+		background-color: forestgreen;
+		.form-label{
+			width: 100%;
+			background-color: white; 
+			font-size: 2rem; 
+			text-align: center; 
+			font-weight: bold;
+			border: 1px black solid; 
+		}
+		.form-input{
+			text-align: center; 
+			input{
+				width: 12vw;
+				height: 6vh;
+				font-size: 2rem; 
+				border: 1px black solid;
+				padding: 5px 10px;
+
+			}
+		}
+		.container-button{
+			margin-top: 0.5rem; 
+			text-align: right; 
+		}
+	}
+}
