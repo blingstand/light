@@ -1,0 +1,18 @@
+.container-main{
+	margin-top: 3rem; 
+	background-color: #e6f7ff;
+	height: 75vh;
+	display: grid;
+	grid-template-columns: 4% 0.2fr 0.8fr 4%;  
+	overflow: hidden;
+	.container-app-input-code{
+		grid-column: 2; 
+		background-color: none;
+		display: grid;
+		place-items: center; 
+	}
+	.container-app-game{
+		grid-column: 3; 
+		background-color: teal;
+	}
+}

@@ -9,33 +9,32 @@ export class GameService{
 
     url = 'http://localhost:8000/api/victory/code/'
     balls = [
-    {index: 1, name:    'ball-1', status:   'light-on', 
-    relatives: [2, 4]},
+        {index: 1, name:    'ball-1', status:   'light-on', 
+        relatives: [2, 4]},
 
-    {index: 2, name:    'ball-2', status:   'light-off', 
-    relatives: [1, 3, 5]    },
+        {index: 2, name:    'ball-2', status:   'light-off', 
+        relatives: [1, 3, 5]    },
 
-    {index: 3, name:    'ball-3', status:   'light-on', 
-    relatives: [2, 6]},
+        {index: 3, name:    'ball-3', status:   'light-on', 
+        relatives: [2, 6]},
 
-    {index: 4, name:    'ball-4', status:   'light-on', 
-    relatives: [1, 5, 7]},
+        {index: 4, name:    'ball-4', status:   'light-on', 
+        relatives: [1, 5, 7]},
 
-    {index: 5, name:    'ball-5', status:   'light-on', 
-    relatives: [2, 4, 8]},
+        {index: 5, name:    'ball-5', status:   'light-on', 
+        relatives: [2, 4, 8]},
 
-    {index: 6, name:    'ball-6', status:   'light-on', 
-    relatives: [3, 9]},
+        {index: 6, name:    'ball-6', status:   'light-on', 
+        relatives: [3, 9]},
 
-    {index: 7, name:    'ball-7', status:   'light-on', 
-    relatives: [4, 8]},
+        {index: 7, name:    'ball-7', status:   'light-on', 
+        relatives: [4, 8]},
 
-    {index: 8, name:    'ball-8', status:   'light-on', 
-    relatives: [5, 7, 9]},
+        {index: 8, name:    'ball-8', status:   'light-on', 
+        relatives: [5, 7, 9]},
 
-    {index: 9, name:    'ball-9', status:   'light-on', 
-    relatives: [6, 8]},
-
+        {index: 9, name:    'ball-9', status:   'light-on', 
+        relatives: [6, 8]},
     ]
     steps = [
     { clicked: null, inactive: [2]}
@@ -66,7 +65,6 @@ export class GameService{
         this.changeBallStatus(index)
         this.changeRelativesStatus(index)
         this.createNewStep(index)
-        console.log(this.steps)
     }
     getAllInactives(){
         //I want to return an array of all inactive ball
@@ -118,10 +116,9 @@ export class GameService{
         victoryCode = victoryCode.slice(0, -1);
         return victoryCode
     }
-    sendCodeToServer() {
+    sendMsgToServer(message) {
         //I want to send a code to the server
         const code = this.getVictoryCode()
-        const message = { code: code, size : code.length}
         this.httpClient
         .post(this.url, message)
         .subscribe(
@@ -135,16 +132,11 @@ export class GameService{
     }
     isVictory(){
         //I want to return false if at least one ball is not on
-        console.log("balls : ")
-        console.log(this.balls)
         for (let ball of this.balls){
             if (ball.status === "light-off"){
-                console.log('pas encore de victoire, car : ')
-                console.log(ball.index)
                 return false
             }
         }
-        this.sendCodeToServer()
         return true
     }
 

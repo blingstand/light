@@ -15,7 +15,6 @@ export class ScoreComponent implements OnInit {
 
 	ngOnInit() {
 		this.steps = this.gameService.steps
-		console.log(this.steps)
 	}
 	onGoToStep(formerState: number){
 		//I want to set light status as the given formerState

@@ -11,7 +11,7 @@ export class GameComponent implements OnInit {
 	balls : any[]; 
 	counter: any[] = ["1","2","3","4","5","6"]
 	indexOfBall: number; 
-	// @Input() ballName: string; 
+	
 	//  	@Input() ballStatus: string; 
 
 	constructor(private gameService: GameService) { }

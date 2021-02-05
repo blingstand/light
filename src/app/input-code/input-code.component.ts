@@ -1,6 +1,6 @@
-import { Component, OnInit } 	from '@angular/core';
-import { NgForm } 				from '@angular/forms';
-import { GameService } 			from '../services/game.service';
+import { Component, OnInit, Input } 	from '@angular/core';
+import { NgForm } 						from '@angular/forms';
+import { GameService } 					from '../services/game.service';
 
 
 @Component({
@@ -9,6 +9,8 @@ import { GameService } 			from '../services/game.service';
 	styleUrls: ['./input-code.component.scss']
 })
 export class InputCodeComponent implements OnInit {
+
+	@Input() fromParentCode: string; 
 
 	constructor(private gameService: GameService) { }
 
@@ -40,7 +42,8 @@ export class InputCodeComponent implements OnInit {
 			() => { 
 				if (this.gameService.isVictory() !== false){
 					alert("victoire") ;
-					this.gameService.sendCodeToServer() 
+					const msg = { status: "victory", code: code, size: code.length }
+					this.gameService.sendMsgToServer(msg) 
 				}else{
 					alert("echec");
 				}
