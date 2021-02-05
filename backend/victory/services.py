@@ -1,5 +1,6 @@
 from .models import Code
 
+test = "ok"
 class Services(): 
 
 	def search_existing_code(self, code):

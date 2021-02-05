@@ -19,7 +19,7 @@ export class CodeService{
 		}
 		//3- deals with result: victory >send code to server / fail restart from begining
 		if (this.gameService.isVictory() !== false){
-				const msg = { code: receivedCode, size: receivedCode.length }
+				const msg = { success: true, code: receivedCode, size: receivedCode.length }
 				this.gameService.sendMsgToServer(msg) 
 				this.gameService.returnToFormerState(0)
 			console.log('%c*****************************************************',	'color: #0c690c')
@@ -27,6 +27,9 @@ export class CodeService{
     		console.log(receivedCode)
     		console.log('%c*****************************************************',	'color: #0c690c')
     	}else{
+			const msg = { success: false, code: receivedCode, size: receivedCode.length }
+			this.gameService.sendMsgToServer(msg) 
+			this.gameService.returnToFormerState(0)
     		console.log('%c*****************************************************',	'color: #a30505')
     		console.log('%cERROR CODE URL : le code ci-dessous ne fonctionne pas', 'color: #a30505')
     		console.log(receivedCode)

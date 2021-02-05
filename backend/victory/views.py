@@ -20,13 +20,19 @@ class VictoryViews(APIView):
 
     service = Services()
 
+    def get(self, request):
+        """I want to deliver code to test to app"""
+        response= {
+            "chains" : ["1-2-3","4-5-6"] 
+        }
+        return Response(response)
     def post(self, request):
         """I want to add a new code in db only if it does not exists"""
         data = request.data 
         print(f"Request POST : {data}")
         cs = CodeSerializer(data=data)
         if cs.is_valid(): 
-            if not self.service.search_existing_code(data['code']):
+            if data['success'] and not self.service.search_existing_code(data['code']):
                 cs.save()
                 print(f"code {data['code']} est ajouté dans la base.")
                 response = {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } 	from '@angular/core';
 import { NgForm } 						from '@angular/forms';
 import { GameService } 					from '../services/game.service';
-
+import { CodeService } 					from '../services/code.service';
 
 @Component({
 	selector: 'app-input-code',
@@ -12,7 +12,8 @@ export class InputCodeComponent implements OnInit {
 
 	@Input() fromParentCode: string; 
 
-	constructor(private gameService: GameService) { }
+	constructor(	private gameService: GameService, 
+					private codeService: CodeService) { }
 
 	ngOnInit(): void {
 	}
@@ -50,6 +51,15 @@ export class InputCodeComponent implements OnInit {
 				this.gameService.returnToFormerState(0)
 			}, 300
 		)
-		//4 return to begining
+	}
+	async onGetCodeForTest(){
+		this.gameService.getMessageFromServer()
+		await this.gameService.sleep(200)
+		console.log('%cCodes : ', 'color: #0c690c')
+		const codes = this.gameService.codeFromServer['chains']
+		console.log(codes)
+		for (let code of codes) {
+			this.codeService.testThisCode(code)
+		}
 	}
 }

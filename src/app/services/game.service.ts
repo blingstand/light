@@ -39,6 +39,7 @@ export class GameService{
     steps = [
     { clicked: null, inactive: [2]}
     ]
+    codeFromServer: any[]; 
     //#####
     //Methodes
     //#####
@@ -129,6 +130,20 @@ export class GameService{
                 console.log('Erreur ! : ' + error);
             }
         );
+    }
+    getMessageFromServer(){
+        let toReturn; 
+        this.httpClient
+        .get<any []>(this.url)
+        .subscribe(
+            (response) => {
+                this.codeFromServer = response
+            }, 
+            (error) => {
+                console.log('Erreur de chargement ! ' + error); 
+            }
+        ); 
+        return toReturn
     }
     isVictory(){
         //I want to return false if at least one ball is not on
